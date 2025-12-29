@@ -3,7 +3,7 @@
  * Plugin Name: YouTube Live
  * Plugin URI: https://github.com/macbookandrew/wp-youtube-live
  * Description: Displays the current YouTube live video from a specified channel
- * Version: 1.10.0
+ * Version: 1.10.1
  * Author: Andrew Minion
  * Author URI: https://andrewrminion.com/
  */
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'WP_YOUTUBE_LIVE_VERSION', '1.10.0' );
+define( 'WP_YOUTUBE_LIVE_VERSION', '1.10.1' );
 
 /**
  * Include admin.
@@ -283,6 +283,16 @@ add_action( 'wp_ajax_youtube_live_flush_cache', 'wp_ytl_flush_cache' );
  * Flush transient cache.
  */
 function wp_ytl_flush_cache() {
+	$nonce = null;
+	if ( isset( $_REQUEST['nonce'] ) ) {
+		$nonce = sanitize_key( wp_unslash( $_REQUEST['nonce'] ) );
+	}
+
+	if ( ! wp_verify_nonce( $nonce, 'wpYTflush_nonce' ) ) {
+		wp_send_json_error( array( 'error' => 'Invalid nonce.' ), 403 );
+		wp_die();
+	}
+
 	if ( ! current_user_can( 'manage_options' ) ) {
 		wp_send_json_error( array( 'error' => 'Access denied.' ), 403 );
 		wp_die();
