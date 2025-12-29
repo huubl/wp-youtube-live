@@ -1,12 +1,12 @@
 # WP YouTube Live #
-**Contributors:** [macbookandrew](https://profiles.wordpress.org/macbookandrew)  
-**Donate link:**       https://cash.me/$AndrewRMinionDesign  
-**Tags:**              youtube, live, video, embed  
-**Requires at least:** 3.6  
-**Tested up to:**      6.3.2  
-**Stable tag:**        1.10.0  
-**License:**           GPLv2 or later  
-**License URI:**       http://www.gnu.org/licenses/gpl-2.0.html  
+**Contributors:** [macbookandrew](https://profiles.wordpress.org/macbookandrew)
+**Donate link:**       https://cash.me/$AndrewRMinionDesign
+**Tags:**              youtube, live, video, embed
+**Requires at least:** 3.6
+**Tested up to:**      6.3.2
+**Stable tag:**        1.10.1
+**License:**           GPLv2 or later
+**License URI:**       http://www.gnu.org/licenses/gpl-2.0.html
 
 Displays the current YouTube live video from a specified channel.
 
@@ -183,6 +183,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 
 ## Changelog ##
+
+### 1.10.1 ###
+- Add nonce to protect cache flush
 
 ### 1.10.0 ###
 - Fix `show_related` parameter
